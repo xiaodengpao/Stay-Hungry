@@ -1,0 +1,15 @@
+dist
+node_modules
+bower_components
+.idea
+*.swp
+.DS_Store
+.DS_Store?
+config.js
+gulpfile.js
+npm-debug.log
+package.json
+src/img/*
+src/libs/*
+src/sass/*
+src/index.html
