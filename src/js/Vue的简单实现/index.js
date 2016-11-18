@@ -1,5 +1,3 @@
-import {designJS} from './designJS.js'
-
 /**
 * @ author: xingdongpeng
 * @ name: EventEmitter 观察者模式
