@@ -27,5 +27,22 @@
 /*
 * 3、代理模式：保护代理、虚拟代理
 */
+// var myImage = (function(){
+// 	var imgNode = document.createElement( 'img' ); 
+// 	document.body.appendChild( imgNode );
+// 	return function( src ){ 
+// 		imgNode.src = src;
+// 	}
+// })()
 
-console.log(new Image)
+// var proxyImage = (function(){ 
+// 	var img = new Image;
+// 	img.onload = function(){ 
+// 		myImage( this.src );
+// 	}
+// 	return function( src ){
+// 		myImage( '../img/avatar.jpg' ); 
+// 		img.src = src;
+// 	}
+// })()
+// proxyImage( 'http://xingdongpeng.com/images/avatar.jpg' );
