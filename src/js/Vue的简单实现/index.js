@@ -381,7 +381,6 @@ class Vue  {
 		Object.keys(data).forEach(key=>this._proxy(key))
 		observe(data, this);
 	}
-
 	$watch(expOrFn, cb){
 		return new Watcher(this, expOrFn, cb);
 	}
