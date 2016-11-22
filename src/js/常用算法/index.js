@@ -100,7 +100,6 @@ const UpQuickSort = (array, left, right) => {
     		array[i] = array[j];
     		array[j] = t;
     	}
-    		
 	}
 	array[right]=array[i]; //交换基准数和k位置上的数
 	array[i]=pivot;
@@ -113,3 +112,42 @@ const UpQuickSort = (array, left, right) => {
 // var array=[4,7,2,8,3,9,0,1,2,2];
 // UpQuickSort(array, 0, array.length-1);
 // console.log(array)
+
+// 3、随机生成指定长度的字符串
+const randomString = n => {
+	let string = 'qwertyuiopasdfghjklzxcvbnm'.split('');
+	let tempString = [];
+	for ( let i=0; i<n; i++ ){
+		let random = parseInt( Math.random() * 25 );
+		tempString.push(string[random])
+	}
+	return tempString.join('');
+}
+
+// 4、 实现trim函数
+const stringTrim = str => {
+	str = str.split('');
+	if ( str[0] === ' ' ){
+		str.shift();
+	}
+	if ( str[str.length-1] === ' ' ){
+		str.pop();
+	}
+	if ( str[0]===' ' || str[str.length-1]==' ' ){
+		return stringTrim( str.join('') )
+	} else {
+		return str.join('');
+	}
+
+}
+let sss = ' aaa  '
+console.log(stringTrim(sss))
+
+/*
+* focus、blur 不冒泡；focusin、focusout冒泡
+* abort不冒泡：图片终止加载时调用
+* change事件冒泡
+*/
+document.getElementById('input').addEventListener('click',(eve) => {
+	console.log(eve)
+}, false);
