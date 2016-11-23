@@ -20,6 +20,13 @@ class EventEmitter {
 	}
 }
 
+let e = new EventEmitter();
+e.on('a',function(){
+	console.log(1)
+})
+e.emit('a')
+
+
 
 /**
 * @ author: xingdongpeng
