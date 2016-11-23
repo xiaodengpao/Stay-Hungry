@@ -96,8 +96,9 @@ console.log(object)
 
 /**
 * @ name: 寄生组合式继承           
-* @ desc: 其实就是组合继承的优化版，把原型链上的父类实例去掉，直接复制父类原型链上的方法
+* @ desc: 其实就是组合继承的优化版，把原型链上的父类实例去掉，直接复制父类原型链上的方法  和ES6的类的继承很相似，但是有重大不同
 */
+
 function Super(){
     this.name = 'super';
 }
@@ -135,4 +136,45 @@ function object(ob){
 
 
 var sub = new Sub();
-sub.sayAge()
+sub.sayName(); // super
+// 因为原型式深度复制，父类原型的改变不会影响子类
+Super.prototype.sayName = ()=>{
+	console.log('changed!')
+}
+sub.sayName(); // super
+
+
+/**
+* @ name: ES6类的继承
+* @ desc: ES6类的继承
+*/
+
+class Super {
+	constructor() {
+		this.name = 'super'
+	}
+	say() {
+		console.log(this.name)
+	}
+}
+
+class Sub extends Super {
+	constructor() {
+		super();
+		this.sec_name = 'sub'
+	}
+}
+
+let sub = new Sub();
+
+sub.say(); // super
+
+// 父类原型的改变会影响子类！
+Super.prototype.say = () => {
+	console.log('changed!')
+}
+
+sub.say(); // changed
+
+console.log(new Super()) // constructor-> Super
+console.log(sub) // constructor-> Sub

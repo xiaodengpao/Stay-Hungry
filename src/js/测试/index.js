@@ -1,4 +1,26 @@
-/**
-* @ name: 原型链继承
-* @ desc: 直接把父类实例扔到子类原型链上，简单粗暴
-*/
+class Super {
+	constructor() {
+		this.name = 'super'
+	}
+	say() {
+		console.log(this.name)
+	}
+}
+
+class Sub extends Super {
+	constructor() {
+		super();
+		this.sec_name = 'sub'
+	}
+}
+
+let sub = new Sub();
+sub.say();
+
+Super.prototype.say = () => {
+	console.log('changed!')
+}
+sub.say();
+
+console.log(new Super()) //constructor-> Super
+console.log(sub) //constructor-> Sub
