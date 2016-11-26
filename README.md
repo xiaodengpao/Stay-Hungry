@@ -1,5 +1,5 @@
 # Stay-Hungry
-## 记录自己的学习所得，Stay Foolish. Stay Hungry.
+## 记录自己的学习所得 `Stay Hungry.Stay Foolish.`
 
 ###SRC/JS文件夹下的JS文件是代码
 
