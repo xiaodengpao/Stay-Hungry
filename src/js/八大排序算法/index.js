@@ -22,6 +22,38 @@ const insertSort = array => {
 		}
 	}
 }
+// 小 -> 大
+const selectSort = array =>{
+    for( let i=0; i<array.length-1; i++ ){
+        let min = array[i];
+        let index = i;
+        for( let j=i; j<array.length-1; j++ ){
+            if( array[j+1]<min ){
+                min = array[j+1];
+                index = j+1;
+            }
+        }
+        let temp = array[i];
+        array[i] = min;
+        array[index] = temp;
+    }
+}
+
+
+// 小 -> 大
+const insertSort = array =>{
+    for( let i=1; i<array.length; i++ ){
+        for( let j=0; j<i; j++ ){
+            if( array[i] >array[j]){
+                 
+            }else{
+                // 先添加 后删除 避免索引紊乱
+                array.splice(j,0,array[i]);
+                array.splice(i+1,1);
+            }
+        }
+    }
+}
 
 /* 
 	稳定性：数据相等，则不进行位置的交换。 -->稳定
@@ -60,6 +92,21 @@ const selectSort = array => {
 * @ name: 冒泡排序
 */
 
+// 小 -> 大 第二次写，简化一下。
+const bubbleSort = array => {
+    for( let i=0; i<array.length; i++ ){
+        for( let j=1 ;j<=array.length - i; j++ ){
+            if( array[j] < array[j-1]){
+                let temp = array[j];
+                array[j] = array[j-1];
+                array[j-1] = temp
+            }
+        }
+    }
+}
+
+
+
 const bubbleSort = array => {
 	// 开始比较位
 	for( let inx=1; inx<array.length; inx++ ){
@@ -92,3 +139,35 @@ const BubbleSort = array => {
 * @ name: 快排
 */
 
+const quickSort = ( array, left, right ) => {
+	if(left>=right) return;
+    let pivot = array[left];
+    let i = left;
+    let j = right;
+    // 循环一遍
+    while (j > i){
+        while( j>i && array[j]>=pivot ){
+            j --;
+        }
+        while( j>i && array[i]<=pivot ){
+            i ++;
+        }
+        if( j>i ){
+            let temp = array[j];
+            array[j] = array[i];
+            array[i] = temp;
+        }
+    }
+    if( j==i ){
+        let temp = array[i];
+         array[i] = array[left];
+         array[left] = temp;
+    }
+    quickSort( array, left, i-1 );
+    quickSort( array, i+1, right );
+}
+
+
+let array = [1,21,23,123,123,1,12,1]
+quickSort(array,0,array.length-1)
+console.log(array)

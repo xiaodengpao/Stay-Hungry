@@ -13,10 +13,27 @@ const getSingle = function( fn ){
 	}
 };
 let s =  getSingle(function(){
-	console.log(1);
+	
 })
 s();
 
+// 简单的单利实现方法，不考虑后期的维护性，简单实用。
+const singleFunc = ( function(){
+	let once = false;
+	return function(name){
+		if (!once){
+			this.name = name;
+			once = this;
+		}else {
+			return once;
+		}
+	}
+}
+)();
+
+// let instance_0 = new singleFunc('instance_0');
+// let instance_1 = new singleFunc('instance_1');
+// console.log( instance_1 === instance_0) // true
 // 单例模式并不适合构造函数，适用于普通的执行函数
 
 /*
@@ -27,16 +44,16 @@ s();
 /*
 * 3、代理模式：保护代理、虚拟代理
 */
-var myImage = (function(){
-	var imgNode = document.createElement( 'img' ); 
+let myImage = (function(){
+	let imgNode = document.createElement( 'img' ); 
 	document.body.appendChild( imgNode );
 	return function( src ){ 
 		imgNode.src = src;
 	}
 })()
 
-var proxyImage = (function(){ 
-	var img = new Image;
+let proxyImage = (function(){ 
+	let img = new Image;
 	img.onload = function(){ 
 		myImage( this.src );
 	}
@@ -45,4 +62,10 @@ var proxyImage = (function(){
 		img.src = src;
 	}
 })()
-proxyImage( 'http://xingdongpeng.com/images/avatar.jpg' );
+// proxyImage( 'http://xingdongpeng.com/images/avatar.jpg' );
+
+
+/*
+* 4、发布-订阅模式（观察者模式）
+*/
+

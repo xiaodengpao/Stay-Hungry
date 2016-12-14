@@ -49,7 +49,7 @@ const unique_1 = array => {
 const DownQuickSort = (a, left, right) => {
 	if(left>=right){
      	return;
-   	} 
+   	}
 
    	let i=left;
    	let j=right;
@@ -138,7 +138,6 @@ const stringTrim = str => {
 	} else {
 		return str.join('');
 	}
-
 }
 let sss = ' aaa  '
 console.log(stringTrim(sss))
