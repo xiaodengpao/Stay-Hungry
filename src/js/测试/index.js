@@ -107,7 +107,7 @@ p.get = function (key, returnEntry) {
       ? entry
       : entry.value
   }
-  
+
   // HEAD--------------TAIL
   //   <.older   .newer>
   //  <--- add direction --
@@ -145,3 +145,4 @@ cache.put('a',a)
 
 
 
+// 草
