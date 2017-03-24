@@ -34,24 +34,28 @@ var test = 'window'
 function Promise(executor) {
 	// new Promise()时保存this指针
 	var promise = this
-	promise._onResolvedCallback = []
-	promise._onRejectedCallback = []
+	promise._resolves = []
+	promise._rejects = []
 	// 状态
 	promise._status = 'PENDING'
 	promise._data = null
 
 	function resolve(val) {
+		if( this._status === 'PENDING') {
+			this._status = 'RESOLVED'
+		}
 		setTimeout(function(){
-			promise._status = "FULFILLED"
 			promise._resolves.map(function(fn) {
-				fn(val);
+				// 传递数值
+				fn(val)
 			})
 		}, 0)
 	}
 	function reject(e) {
 		console.log(e)
 	}
-	this.then = function(onFulfilled){
+	// then有两种状态
+	this.then = function(onResolved, onRejected){
 		promise._resolves.push(onFulfilled)
 		return this
 	}
@@ -66,5 +70,8 @@ function Promise(executor) {
 }
 var promise = new Promise(function(resolve, reject){
 	console.log('resolve')
+	resolve('111')
 })
-
+promise.then(function(val) {
+	console.log(val)
+})
