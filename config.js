@@ -35,7 +35,7 @@ module.exports = {
 
         // js文件夹
         'scripts': {
-            entry: './src/js/*/*.js',
+            entry: './src/js/测试/index.js',
             output: './dist/js/'
         }
     },
